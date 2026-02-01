@@ -1,0 +1,76 @@
+Listado de rutas de carpetas para el volumen Xp_Andt
+El número de serie del volumen es 4C08-F701
+C:.
+¦   .env
+¦   .env.example
+¦   archivos.txt
+¦   est-system.php
+¦   estructura.txt
+¦   README.md
+¦   
++---api
+¦   +---auth
+¦   ¦       google.php
+¦   ¦       logout.php
+¦   ¦       
+¦   +---calories
+¦   ¦       log-meal.php
+¦   ¦       stats.php
+¦   ¦       
+¦   +---foods
+¦   ¦       search.php
+¦   ¦       
+¦   +---health
+¦   ¦       save-profile.php
+¦   ¦       
+¦   +---meals
+¦   ¦       generate-plan.php
+¦   ¦       get-plan.php
+¦   ¦       
+¦   +---user
+¦           profile.php
+¦           
++---assets
+¦   +---css
+¦   ¦       calories.css
+¦   ¦       dashboard.css
+¦   ¦       main.css
+¦   ¦       meals.css
+¦   ¦       questionnaire.css
+¦   ¦       
+¦   +---images
+¦   ¦       logo.svg
+¦   ¦       
+¦   +---js
+¦           auth.js
+¦           calories.js
+¦           dashboard.js
+¦           meals.js
+¦           questionnaire.js
+¦           
++---config
+¦       database.php
+¦       google.php
+¦       jwt.php
+¦       load_env.php
+¦       
++---gitignore
+¦       .gitignore
+¦       
++---htaccess
++---middleware
+¦       auth.php
+¦       
++---public
+¦       calories.php
+¦       dashboard.php
+¦       index.php
+¦       login.php
+¦       meals.php
+¦       questionnaire.php
+¦       test-system.php
+¦       
++---sql
+        database.sql
+        foods_database.sql
+        

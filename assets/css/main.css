@@ -190,7 +190,7 @@ input, textarea, select {
     margin-bottom: 6px;
 }
 
-.form-group input {
+.login-page .form-group input {
     width: 100%;
     padding: 12px 16px;
     border: 2px solid var(--color-border);
@@ -198,6 +198,7 @@ input, textarea, select {
     font-size: 15px;
     transition: var(--transition);
 }
+
 
 .form-group input:focus {
     outline: none;

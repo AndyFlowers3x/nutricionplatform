@@ -111,7 +111,7 @@ async function searchFoods(query) {
     `;
 
     try {
-        let url = '/nutricion-platform/api/foods/search.php?';
+let url = '/nutricion-platform/api/foods/search.php?';
         if (query) url += 'q=' + encodeURIComponent(query);
         if (currentCategory) url += '&category=' + currentCategory;
 
@@ -150,6 +150,9 @@ async function searchFoods(query) {
 /**
  * Mostrar resultados de búsqueda
  */
+/**
+ * Mostrar resultados de búsqueda
+ */
 function displaySearchResults(foods) {
     const resultsContainer = document.getElementById('searchResults');
     
@@ -164,18 +167,52 @@ function displaySearchResults(foods) {
         'other': '🍽️'
     };
 
-    const html = foods.map(food => `
-        <div class="food-item" onclick='selectFood(${JSON.stringify(food)})'>
-            <div class="food-icon">${categoryIcons[food.category] || '🍽️'}</div>
-            <div class="food-info">
-                <div class="food-name">${food.name}</div>
-                <div class="food-serving">${food.serving_size} ${food.serving_unit} • ${food.protein}g P • ${food.carbs}g C • ${food.fats}g G</div>
-            </div>
-            <div class="food-calories">${food.calories} kcal</div>
-        </div>
-    `).join('');
+    const categoryColors = {
+        'fruits': '#FEE2E2',
+        'vegetables': '#DCFCE7',
+        'proteins': '#DBEAFE',
+        'grains': '#FEF3C7',
+        'dairy': '#F3E8FF',
+        'snacks': '#FCE7F3',
+        'beverages': '#E0E7FF',
+        'other': '#F3F4F6'
+    };
 
-    resultsContainer.innerHTML = html;
+    const html = foods.map(food => {
+        const foodData = JSON.stringify(food).replace(/"/g, '&quot;');
+        
+        return `
+            <div class="food-item" onclick='selectFood(${foodData})'>
+                <div class="food-image" style="background: ${categoryColors[food.category] || '#F3F4F6'};">
+                    <span class="food-emoji">${categoryIcons[food.category] || '🍽️'}</span>
+                </div>
+                <div class="food-info">
+                    <div class="food-name">${food.name}</div>
+                    <div class="food-serving">${food.serving_size} ${food.serving_unit}</div>
+                    <div class="food-macros-mini">
+                        <span class="mini-macro">P: ${food.protein}g</span>
+                        <span class="mini-macro">C: ${food.carbs}g</span>
+                        <span class="mini-macro">G: ${food.fats}g</span>
+                    </div>
+                </div>
+                <div class="food-calories-badge">
+                    <div class="calories-number">${food.calories}</div>
+                    <div class="calories-label">kcal</div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    resultsContainer.innerHTML = html || `
+        <div class="search-hint">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <p>No se encontraron alimentos</p>
+        </div>
+    `;
 }
 
 /**
@@ -315,7 +352,7 @@ async function confirmLogMeal() {
     loader.classList.remove('hidden');
 
     try {
-        const response = await fetch('/nutricion-platform/api/calories/log-meal.php', {
+const response = await fetch('/nutricion-platform/api/calories/log-meal.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

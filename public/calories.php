@@ -230,6 +230,7 @@ $todayLog = $stmt->fetchAll();
                 </div>
 
                 <!-- Resultados de búsqueda -->
+              <!-- Resultados de búsqueda -->
                 <div class="search-results" id="searchResults">
                     <div class="search-hint">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -237,8 +238,13 @@ $todayLog = $stmt->fetchAll();
                             <path d="M21 21l-4.35-4.35"/>
                         </svg>
                         <p>Busca un alimento para ver los resultados</p>
+                        <p style="font-size: 13px; color: #9CA3AF; margin-top: 8px;">Tenemos más de 100 alimentos en nuestra base de datos</p>
                     </div>
                 </div>
+
+
+
+
             </div>
         </div>
     </div>
