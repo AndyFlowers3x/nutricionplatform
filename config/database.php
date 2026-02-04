@@ -1,20 +1,15 @@
 <?php
 /**
  * Configuración de Base de Datos
-<<<<<<< HEAD
- * Manejo de conexión PDO con MySQL
- */
-
-=======
  * Archivo: config/database.php
  * 
+ * Manejo de conexión PDO con MySQL
  * Este archivo usa las variables del archivo .env
  */
 
 // Cargar variables de entorno
 require_once __DIR__ . '/load_env.php';
 
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 class Database {
     private $host;
     private $db_name;
@@ -22,52 +17,6 @@ class Database {
     private $password;
     private $charset;
     private $conn;
-<<<<<<< HEAD
-
-    public function __construct() {
-        $this->host = $_ENV['DB_HOST'] ?? 'localhost';
-        $this->db_name = $_ENV['DB_NAME'] ?? '';
-        $this->username = $_ENV['DB_USER'] ?? '';
-        $this->password = $_ENV['DB_PASS'] ?? '';
-        $this->charset = $_ENV['DB_CHARSET'] ?? 'utf8mb4';
-    }
-
-    /**
-     * Obtener conexión PDO
-     */
-    public function getConnection() {
-        $this->conn = null;
-
-        try {
-            $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=" . $this->charset;
-            
-            $options = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false,
-            ];
-
-            $this->conn = new PDO($dsn, $this->username, $this->password, $options);
-            
-        } catch(PDOException $e) {
-            error_log("Error de conexión: " . $e->getMessage());
-            throw new Exception("Error al conectar con la base de datos");
-        }
-
-        return $this->conn;
-    }
-
-    /**
-     * Cerrar conexión
-     */
-    public function closeConnection() {
-        $this->conn = null;
-    }
-}
-?>
-```
-
-=======
     
     public function __construct() {
         // Obtener configuración desde .env
@@ -78,6 +27,9 @@ class Database {
         $this->charset = env('DB_CHARSET', 'utf8mb4');
     }
     
+    /**
+     * Obtener conexión PDO
+     */
     public function getConnection() {
         $this->conn = null;
         
@@ -86,12 +38,13 @@ class Database {
                    ";dbname=" . $this->db_name . 
                    ";charset=" . $this->charset;
             
-            $this->conn = new PDO($dsn, $this->username, $this->password);
+            $options = [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ];
             
-            // Configurar PDO
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $this->conn = new PDO($dsn, $this->username, $this->password, $options);
             
         } catch(PDOException $e) {
             // Log del error
@@ -133,6 +86,12 @@ class Database {
             ];
         }
     }
+    
+    /**
+     * Cerrar conexión
+     */
+    public function closeConnection() {
+        $this->conn = null;
+    }
 }
 ?>
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b

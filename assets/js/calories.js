@@ -1,9 +1,5 @@
 /**
  * Sistema de Registro de Calorías
-<<<<<<< HEAD
-=======
- * Búsqueda de alimentos y registro de comidas
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
  */
 
 let selectedFood = null;
@@ -14,15 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCaloriesSystem();
 });
 
-<<<<<<< HEAD
 function initializeCaloriesSystem() {
-=======
-/**
- * Inicializar sistema
- */
-function initializeCaloriesSystem() {
-    // Event listener para búsqueda
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     const searchInput = document.getElementById('foodSearchInput');
     if (searchInput) {
         searchInput.addEventListener('input', function(e) {
@@ -33,7 +21,6 @@ function initializeCaloriesSystem() {
         });
     }
 
-<<<<<<< HEAD
     const categoryButtons = document.querySelectorAll('.category-btn');
     categoryButtons.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -44,65 +31,25 @@ function initializeCaloriesSystem() {
         });
     });
 
-=======
-    // Event listeners para filtros de categoría
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    categoryButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remover active de todos
-            categoryButtons.forEach(b => b.classList.remove('active'));
-            // Agregar active al clickeado
-            this.classList.add('active');
-            
-            currentCategory = this.getAttribute('data-category');
-            const query = searchInput.value;
-            searchFoods(query);
-        });
-    });
-
-    // Event listener para input de porciones
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     const servingsInput = document.getElementById('servingsInput');
     if (servingsInput) {
         servingsInput.addEventListener('input', updateServingPreview);
     }
 }
 
-<<<<<<< HEAD
-=======
-/**
- * Abrir modal de agregar comida
- */
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 function openAddFoodModal() {
     const modal = document.getElementById('addFoodModal');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-<<<<<<< HEAD
-=======
-    
-    // Focus en el input de búsqueda
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     setTimeout(() => {
         document.getElementById('foodSearchInput').focus();
     }, 100);
 }
 
-<<<<<<< HEAD
-=======
-/**
- * Cerrar modal de agregar comida
- */
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 function closeAddFoodModal() {
     const modal = document.getElementById('addFoodModal');
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
-<<<<<<< HEAD
-=======
-    
-    // Limpiar búsqueda
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     document.getElementById('foodSearchInput').value = '';
     document.getElementById('searchResults').innerHTML = `
         <div class="search-hint">
@@ -115,12 +62,6 @@ function closeAddFoodModal() {
     `;
 }
 
-<<<<<<< HEAD
-=======
-/**
- * Buscar alimentos
- */
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 async function searchFoods(query) {
     const resultsContainer = document.getElementById('searchResults');
     
@@ -137,22 +78,14 @@ async function searchFoods(query) {
         return;
     }
 
-<<<<<<< HEAD
     resultsContainer.innerHTML = `
         <div class="search-hint">
             <div class="spinner" style="width: 48px; height: 48px; margin: 0 auto; border: 4px solid #E5E7EB; border-top-color: #10B981; border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
-=======
-    // Mostrar loader
-    resultsContainer.innerHTML = `
-        <div class="search-hint">
-            <div class="spinner" style="width: 48px; height: 48px; margin: 0 auto;"></div>
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
             <p>Buscando...</p>
         </div>
     `;
 
     try {
-<<<<<<< HEAD
         let url = '/nutricion-platform/api/foods/search.php?';
         if (query) url += 'q=' + encodeURIComponent(query);
         if (currentCategory) url += '&category=' + currentCategory;
@@ -162,15 +95,6 @@ async function searchFoods(query) {
         if (!response.ok) {
             throw new Error('Error HTTP: ' + response.status);
         }
-=======
-let url = '/nutricion-platform/api/foods/search.php?';
-        if (query) url += 'q=' + encodeURIComponent(query);
-        if (currentCategory) url += '&category=' + currentCategory;
-
-        const response = await fetch(url, {
-            credentials: 'include'
-        });
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 
         const data = await response.json();
 
@@ -185,41 +109,21 @@ let url = '/nutricion-platform/api/foods/search.php?';
                         <line x1="12" y1="16" x2="12.01" y2="16"/>
                     </svg>
                     <p>No se encontraron alimentos</p>
-<<<<<<< HEAD
-=======
-                    <p style="font-size: 13px; margin-top: 8px;">Intenta con otro término de búsqueda</p>
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
                 </div>
             `;
         }
 
     } catch (error) {
-<<<<<<< HEAD
         console.error('Error al buscar:', error);
         resultsContainer.innerHTML = `
             <div class="search-hint">
                 <p style="color: #EF4444;">Error al buscar alimentos</p>
                 <p style="font-size: 13px; margin-top: 8px;">${error.message}</p>
-=======
-        console.error('Error al buscar alimentos:', error);
-        resultsContainer.innerHTML = `
-            <div class="search-hint">
-                <p style="color: #EF4444;">Error al buscar alimentos</p>
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
             </div>
         `;
     }
 }
 
-<<<<<<< HEAD
-=======
-/**
- * Mostrar resultados de búsqueda
- */
-/**
- * Mostrar resultados de búsqueda
- */
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 function displaySearchResults(foods) {
     const resultsContainer = document.getElementById('searchResults');
     
@@ -246,17 +150,10 @@ function displaySearchResults(foods) {
     };
 
     const html = foods.map(food => {
-<<<<<<< HEAD
         const foodJson = JSON.stringify(food).replace(/'/g, "\\'").replace(/"/g, '&quot;');
         
         return `
             <div class="food-item" onclick='selectFood(${foodJson})'>
-=======
-        const foodData = JSON.stringify(food).replace(/"/g, '&quot;');
-        
-        return `
-            <div class="food-item" onclick='selectFood(${foodData})'>
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
                 <div class="food-image" style="background: ${categoryColors[food.category] || '#F3F4F6'};">
                     <span class="food-emoji">${categoryIcons[food.category] || '🍽️'}</span>
                 </div>
@@ -277,7 +174,6 @@ function displaySearchResults(foods) {
         `;
     }).join('');
 
-<<<<<<< HEAD
     resultsContainer.innerHTML = html;
 }
 
@@ -287,36 +183,6 @@ function selectFood(food) {
     openServingModal();
 }
 
-=======
-    resultsContainer.innerHTML = html || `
-        <div class="search-hint">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="12" y1="8" x2="12" y2="12"/>
-                <line x1="12" y1="16" x2="12.01" y2="16"/>
-            </svg>
-            <p>No se encontraron alimentos</p>
-        </div>
-    `;
-}
-
-/**
- * Seleccionar alimento
- */
-function selectFood(food) {
-    selectedFood = food;
-    
-    // Cerrar modal de búsqueda
-    closeAddFoodModal();
-    
-    // Abrir modal de porciones
-    openServingModal();
-}
-
-/**
- * Abrir modal de porciones
- */
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 function openServingModal() {
     if (!selectedFood) return;
 
@@ -324,10 +190,6 @@ function openServingModal() {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-<<<<<<< HEAD
-=======
-    // Mostrar información del alimento
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     const infoContainer = document.getElementById('selectedFoodInfo');
     const categoryIcons = {
         'fruits': '🍎',
@@ -348,23 +210,10 @@ function openServingModal() {
         </div>
     `;
 
-<<<<<<< HEAD
     document.getElementById('servingsInput').value = 1;
     updateServingPreview();
 }
 
-=======
-    // Reset porciones a 1
-    document.getElementById('servingsInput').value = 1;
-
-    // Actualizar preview
-    updateServingPreview();
-}
-
-/**
- * Cerrar modal de porciones
- */
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 function closeServingModal() {
     const modal = document.getElementById('servingModal');
     modal.classList.remove('active');
@@ -372,12 +221,6 @@ function closeServingModal() {
     selectedFood = null;
 }
 
-<<<<<<< HEAD
-=======
-/**
- * Aumentar porción
- */
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 function increaseServing() {
     const input = document.getElementById('servingsInput');
     let value = parseFloat(input.value) || 0;
@@ -387,12 +230,6 @@ function increaseServing() {
     updateServingPreview();
 }
 
-<<<<<<< HEAD
-=======
-/**
- * Disminuir porción
- */
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 function decreaseServing() {
     const input = document.getElementById('servingsInput');
     let value = parseFloat(input.value) || 0;
@@ -402,12 +239,6 @@ function decreaseServing() {
     updateServingPreview();
 }
 
-<<<<<<< HEAD
-=======
-/**
- * Actualizar preview de porciones
- */
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 function updateServingPreview() {
     if (!selectedFood) return;
 
@@ -445,12 +276,6 @@ function updateServingPreview() {
     `;
 }
 
-<<<<<<< HEAD
-=======
-/**
- * Confirmar y registrar comida
- */
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 async function confirmLogMeal() {
     if (!selectedFood) return;
 
@@ -460,17 +285,9 @@ async function confirmLogMeal() {
     loader.classList.remove('hidden');
 
     try {
-<<<<<<< HEAD
         const response = await fetch('/nutricion-platform/api/calories/log-meal.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-=======
-const response = await fetch('/nutricion-platform/api/calories/log-meal.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
             credentials: 'include',
             body: JSON.stringify({
                 food_id: selectedFood.id,
@@ -478,7 +295,6 @@ const response = await fetch('/nutricion-platform/api/calories/log-meal.php', {
             })
         });
 
-<<<<<<< HEAD
         if (!response.ok) {
             throw new Error('Error HTTP: ' + response.status);
         }
@@ -492,80 +308,26 @@ const response = await fetch('/nutricion-platform/api/calories/log-meal.php', {
             addLogEntry(data.logged);
         } else {
             throw new Error(data.error || 'Error desconocido');
-=======
-        const data = await response.json();
-
-        if (data.success) {
-            // Cerrar modal
-            closeServingModal();
-            
-            // Mostrar notificación de éxito
-            showNotification('✅ Comida registrada exitosamente', 'success');
-            
-            // Actualizar estadísticas
-            updateTodayStats(data.today_totals);
-            
-            // Agregar a la lista
-            addLogEntry(data.logged);
-            
-        } else {
-            throw new Error(data.error || 'Error al registrar comida');
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
         }
 
     } catch (error) {
         console.error('Error:', error);
-<<<<<<< HEAD
         showNotification('❌ Error: ' + error.message, 'error');
-=======
-        showNotification('❌ Error al registrar comida: ' + error.message, 'error');
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     } finally {
         loader.classList.add('hidden');
     }
 }
 
-<<<<<<< HEAD
 function updateTodayStats(totals) {
-=======
-/**
- * Actualizar estadísticas del día
- */
-function updateTodayStats(totals) {
-    // Actualizar valores
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     document.getElementById('totalCalories').textContent = Math.round(totals.total_calories).toLocaleString();
     document.getElementById('totalProtein').textContent = parseFloat(totals.total_protein).toFixed(1) + 'g';
     document.getElementById('totalCarbs').textContent = parseFloat(totals.total_carbs).toFixed(1) + 'g';
     document.getElementById('totalFats').textContent = parseFloat(totals.total_fats).toFixed(1) + 'g';
-<<<<<<< HEAD
 }
 
 function addLogEntry(logged) {
     const logList = document.getElementById('logList');
     
-=======
-
-    // Actualizar barra de progreso (necesitamos el target del usuario)
-    // Por ahora solo animamos la barra
-    const progressBar = document.getElementById('caloriesProgressBar');
-    if (progressBar) {
-        const currentWidth = progressBar.style.width;
-        progressBar.style.width = '0%';
-        setTimeout(() => {
-            progressBar.style.width = currentWidth;
-        }, 100);
-    }
-}
-
-/**
- * Agregar entrada al log
- */
-function addLogEntry(logged) {
-    const logList = document.getElementById('logList');
-    
-    // Remover empty state si existe
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     const emptyState = logList.querySelector('.empty-state');
     if (emptyState) {
         emptyState.remove();
@@ -591,24 +353,11 @@ function addLogEntry(logged) {
         </div>
     `;
 
-<<<<<<< HEAD
     logList.insertBefore(logItem, logList.firstChild);
 }
 
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
-=======
-    // Insertar al inicio
-    logList.insertBefore(logItem, logList.firstChild);
-}
-
-/**
- * Mostrar notificación
- */
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type} show`;
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -618,7 +367,6 @@ function showNotification(message, type = 'info') {
         border-radius: 10px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         z-index: 10000;
-<<<<<<< HEAD
         font-size: 14px;
         font-weight: 500;
         animation: slideInRight 0.3s ease;
@@ -627,39 +375,15 @@ function showNotification(message, type = 'info') {
         max-width: 400px;
     `;
 
-=======
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        min-width: 300px;
-        font-size: 14px;
-        font-weight: 500;
-        animation: slideInRight 0.3s ease;
-    `;
-
-    if (type === 'success') {
-        notification.style.borderLeft = '4px solid #10B981';
-        notification.style.color = '#166534';
-    } else if (type === 'error') {
-        notification.style.borderLeft = '4px solid #EF4444';
-        notification.style.color = '#991B1B';
-    }
-
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     notification.textContent = message;
     document.body.appendChild(notification);
 
     setTimeout(() => {
-<<<<<<< HEAD
         notification.style.opacity = '0';
-=======
-        notification.style.animation = 'slideOutRight 0.3s ease';
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
 
-<<<<<<< HEAD
 // Estilos adicionales
 const style = document.createElement('style');
 style.textContent = `
@@ -668,40 +392,6 @@ style.textContent = `
         to { opacity: 1; transform: translateX(0); }
     }
     
-=======
-// Animaciones CSS adicionales
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideInRight {
-        from {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-    
-    @keyframes slideOutRight {
-        from {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        to {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-    }
-
-    .spinner {
-        border: 3px solid #E5E7EB;
-        border-top-color: #10B981;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-    }
-
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     @keyframes spin {
         to { transform: rotate(360deg); }
     }
@@ -718,10 +408,6 @@ style.textContent = `
         align-items: center;
         justify-content: center;
         z-index: 9999;
-<<<<<<< HEAD
-=======
-        backdrop-filter: blur(5px);
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     }
 
     .loader.hidden {
@@ -731,7 +417,6 @@ style.textContent = `
     .loader .spinner {
         width: 50px;
         height: 50px;
-<<<<<<< HEAD
         border: 4px solid #E5E7EB;
         border-top-color: #10B981;
         border-radius: 50%;
@@ -739,20 +424,10 @@ style.textContent = `
         margin-bottom: 20px;
     }
 
-
-=======
-        margin-bottom: 20px;
-    }
-
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     .loader p {
         color: #1F2937;
         font-weight: 600;
         font-size: 16px;
     }
 `;
-<<<<<<< HEAD
 document.head.appendChild(style);
-=======
-document.head.appendChild(style);
->>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
