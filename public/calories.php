@@ -1,9 +1,17 @@
 <?php
 session_start();
+<<<<<<< HEAD
+=======
+
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 require_once __DIR__ . '/../config/load_env.php';
 require_once __DIR__ . '/../middleware/auth.php';
 
 $user = AuthMiddleware::check();
+<<<<<<< HEAD
+=======
+
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 if (!$user) {
     header('Location: login.php');
     exit;
@@ -13,6 +21,7 @@ require_once __DIR__ . '/../config/database.php';
 $db = new Database();
 $conn = $db->getConnection();
 
+<<<<<<< HEAD
 $stmt = $conn->prepare("SELECT u.*, hp.*, us.weight_unit FROM users u LEFT JOIN health_profiles hp ON u.id = hp.user_id LEFT JOIN user_settings us ON u.id = us.user_id WHERE u.id = ?");
 $stmt->execute([$user['user_id']]);
 $userData = $stmt->fetch();
@@ -23,6 +32,40 @@ $todayStats = $stmt->fetch();
 
 $stmt = $conn->prepare("SELECT * FROM calories_log WHERE user_id = ? AND date = CURDATE() ORDER BY created_at DESC");
 $stmt->execute([$user['user_id']]);
+=======
+// Obtener perfil del usuario
+$stmt = $conn->prepare("
+    SELECT u.*, hp.*, us.weight_unit 
+    FROM users u
+    LEFT JOIN health_profiles hp ON u.id = hp.user_id
+    LEFT JOIN user_settings us ON u.id = us.user_id
+    WHERE u.id = :user_id
+");
+$stmt->execute(['user_id' => $user['user_id']]);
+$userData = $stmt->fetch();
+
+// Obtener estadísticas del día
+$stmt = $conn->prepare("
+    SELECT 
+        COALESCE(SUM(calories), 0) as total_calories,
+        COALESCE(SUM(protein), 0) as total_protein,
+        COALESCE(SUM(carbs), 0) as total_carbs,
+        COALESCE(SUM(fats), 0) as total_fats,
+        COUNT(*) as meals_count
+    FROM calories_log
+    WHERE user_id = :user_id AND date = CURDATE()
+");
+$stmt->execute(['user_id' => $user['user_id']]);
+$todayStats = $stmt->fetch();
+
+// Obtener historial de hoy
+$stmt = $conn->prepare("
+    SELECT * FROM calories_log
+    WHERE user_id = :user_id AND date = CURDATE()
+    ORDER BY created_at DESC
+");
+$stmt->execute(['user_id' => $user['user_id']]);
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 $todayLog = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
@@ -30,7 +73,12 @@ $todayLog = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Registro de Calorías - Tweight</title>
+=======
+    <title>Registro de Calorías - Weight Proffessional Nutrition 
+    </title>
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/css/calories.css">
@@ -38,6 +86,10 @@ $todayLog = $stmt->fetchAll();
 </head>
 <body class="calories-page">
 
+<<<<<<< HEAD
+=======
+    <!-- Sidebar (mismo del dashboard) -->
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     <aside class="sidebar">
         <div class="sidebar-header">
             <div class="logo">
@@ -45,7 +97,11 @@ $todayLog = $stmt->fetchAll();
                     <circle cx="30" cy="30" r="30" fill="#10B981"/>
                     <path d="M30 15L40 25L30 35L20 25L30 15Z" fill="white"/>
                 </svg>
+<<<<<<< HEAD
                 <span>Tweight</span>
+=======
+                <span>Weight Proffessional Nutrition </span>
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
             </div>
         </div>
 
@@ -62,6 +118,7 @@ $todayLog = $stmt->fetchAll();
                 </svg>
                 <span>Calorías</span>
             </a>
+<<<<<<< HEAD
             <a href="meals.php" class="nav-item">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3z"/>
@@ -75,6 +132,8 @@ $todayLog = $stmt->fetchAll();
                 </svg>
                 <span>Lista de Compras</span>
             </a>
+=======
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
         </nav>
 
         <div class="sidebar-footer">
@@ -93,8 +152,15 @@ $todayLog = $stmt->fetchAll();
         </div>
     </aside>
 
+<<<<<<< HEAD
     <main class="main-content">
         
+=======
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Header -->
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
         <header class="calories-header">
             <div>
                 <h1>Registro de Calorías 🔥</h1>
@@ -108,6 +174,10 @@ $todayLog = $stmt->fetchAll();
             </button>
         </header>
 
+<<<<<<< HEAD
+=======
+        <!-- Stats Summary -->
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
         <div class="calories-summary">
             <div class="summary-card main-calories">
                 <div class="summary-icon">🔥</div>
@@ -149,6 +219,10 @@ $todayLog = $stmt->fetchAll();
             </div>
         </div>
 
+<<<<<<< HEAD
+=======
+        <!-- Today's Log -->
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
         <section class="calories-log-section">
             <h2 class="section-title">Comidas de Hoy (<?php echo $todayStats['meals_count']; ?>)</h2>
             
@@ -157,7 +231,11 @@ $todayLog = $stmt->fetchAll();
                     <div class="empty-state">
                         <div class="empty-icon">🍽️</div>
                         <h3>Aún no has registrado comidas hoy</h3>
+<<<<<<< HEAD
                         <p>Haz clic en "Agregar Comida" para empezar</p>
+=======
+                        <p>Haz clic en "Agregar Comida" para empezar a registrar</p>
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
                     </div>
                 <?php else: ?>
                     <?php foreach ($todayLog as $entry): ?>
@@ -194,6 +272,10 @@ $todayLog = $stmt->fetchAll();
             </div>
 
             <div class="modal-body">
+<<<<<<< HEAD
+=======
+                <!-- Buscador -->
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
                 <div class="search-box">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
@@ -201,6 +283,10 @@ $todayLog = $stmt->fetchAll();
                     <input type="text" id="foodSearchInput" placeholder="Buscar alimento... (ej: pollo, arroz, manzana)" autocomplete="off">
                 </div>
 
+<<<<<<< HEAD
+=======
+                <!-- Filtro de categorías -->
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
                 <div class="category-filters">
                     <button class="category-btn active" data-category="">Todos</button>
                     <button class="category-btn" data-category="fruits">🍎 Frutas</button>
@@ -210,6 +296,11 @@ $todayLog = $stmt->fetchAll();
                     <button class="category-btn" data-category="dairy">🥛 Lácteos</button>
                 </div>
 
+<<<<<<< HEAD
+=======
+                <!-- Resultados de búsqueda -->
+              <!-- Resultados de búsqueda -->
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
                 <div class="search-results" id="searchResults">
                     <div class="search-hint">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -217,8 +308,18 @@ $todayLog = $stmt->fetchAll();
                             <path d="M21 21l-4.35-4.35"/>
                         </svg>
                         <p>Busca un alimento para ver los resultados</p>
+<<<<<<< HEAD
                     </div>
                 </div>
+=======
+                        <p style="font-size: 13px; color: #9CA3AF; margin-top: 8px;">Tenemos más de 100 alimentos en nuestra base de datos</p>
+                    </div>
+                </div>
+
+
+
+
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
             </div>
         </div>
     </div>
@@ -247,13 +348,27 @@ $todayLog = $stmt->fetchAll();
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <div class="serving-preview" id="servingPreview"></div>
 
                 <button class="btn-primary btn-block" onclick="confirmLogMeal()">Registrar Comida</button>
+=======
+                <div class="serving-preview" id="servingPreview">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+
+                <button class="btn-primary btn-block" onclick="confirmLogMeal()">
+                    Registrar Comida
+                </button>
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
             </div>
         </div>
     </div>
 
+<<<<<<< HEAD
+=======
+    <!-- Loader -->
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     <div class="loader hidden" id="loader">
         <div class="spinner"></div>
         <p>Guardando...</p>

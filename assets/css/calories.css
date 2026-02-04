@@ -635,4 +635,135 @@
     .preview-macros {
         grid-template-columns: repeat(2, 1fr);
     }
+<<<<<<< HEAD
+=======
+}
+/* =============================================
+   FOOD ITEMS MEJORADOS CON IMÁGENES
+   ============================================= */
+.food-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 2px solid #E5E7EB;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.food-item:hover {
+    border-color: #10B981;
+    background: #F0FDF4;
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.food-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.food-emoji {
+    font-size: 36px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.food-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.food-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 4px;
+}
+
+.food-serving {
+    font-size: 13px;
+    color: #6B7280;
+    margin-bottom: 6px;
+}
+
+.food-macros-mini {
+    display: flex;
+    gap: 8px;
+}
+
+.mini-macro {
+    font-size: 11px;
+    font-weight: 600;
+    color: #9CA3AF;
+    background: #F3F4F6;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.food-calories-badge {
+    text-align: center;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.calories-number {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.calories-label {
+    font-size: 10px;
+    font-weight: 600;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Animación de entrada */
+.food-item {
+    animation: slideInFromLeft 0.3s ease;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .food-item {
+        flex-wrap: wrap;
+    }
+    
+    .food-calories-badge {
+        order: -1;
+        margin-left: auto;
+    }
+    
+    .food-macros-mini {
+        width: 100%;
+    }
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 }

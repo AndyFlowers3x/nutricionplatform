@@ -32,9 +32,14 @@ if ($profile && $profile['weight'] && $profile['height'] && $profile['age']) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuestionario de Salud - Weightloss Professional Nutrition</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="../assets/css/questionnaire.css">
     <link rel="stylesheet" href="../assets/css/main.css">
     
+=======
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/questionnaire.css">
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="questionnaire-page">
@@ -58,6 +63,7 @@ if ($profile && $profile['weight'] && $profile['height'] && $profile['age']) {
                     <p>Cuéntanos un poco sobre ti para personalizar tu plan</p>
                 </div>
 
+<<<<<<< HEAD
                 <div class="form-group">
                     <label for="weight">Peso actual *</label>
                     <div class="input-group">
@@ -84,6 +90,59 @@ if ($profile && $profile['weight'] && $profile['height'] && $profile['age']) {
                     <label for="age">Edad *</label>
                     <input type="number" id="age" name="age" min="15" max="100" placeholder="25" required>
                 </div>
+=======
+              <div class="form-group">
+    <label for="weight">Peso actual *</label>
+    <div class="input-group" style="display:flex; align-items:center;">
+        <input
+            type="number"
+            id="weight"
+            name="weight"
+            step="0.1"
+            min="30"
+            max="300"
+            placeholder="70.5"
+            required
+            style="flex:1; height:40px; padding:6px 10px;"
+        >
+        <select
+            id="weightUnit"
+            name="weight_unit"
+            style="width:80px; height:50px; margin-left:6px;"
+        >
+            <option value="kg" selected>kg</option>
+            <option value="lb">lb</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="height">Altura *</label>
+    <div class="input-group" style="display:flex; align-items:center;">
+        <input
+            type="number"
+            id="height"
+            name="height"
+            step="1"
+            min="100"
+            max="250"
+            placeholder="170"
+            required
+            style="flex:1; height:40px; padding:6px 10px;"
+        >
+        <select
+            id="heightUnit"
+            name="height_unit"
+            style="width:80px; height:50px; margin-left:6px;"
+        >
+            <option value="cm" selected>cm</option>
+            <option value="ft">ft</option>
+        </select>
+    </div>
+</div>
+
+                
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
 
                 <div class="form-group">
                     <label>Género *</label>

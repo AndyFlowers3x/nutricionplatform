@@ -1,7 +1,10 @@
 .env
 /node_modules
 /vendor
+<<<<<<< HEAD
 /storage
 .idea
 .vscode
 *.log
+=======
+>>>>>>> c54ba6597d1462ca55653a83f10c8f0d24e55f7b
