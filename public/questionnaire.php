@@ -31,9 +31,10 @@ if ($profile && $profile['weight'] && $profile['height'] && $profile['age']) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuestionario de Salud - Tweight</title>
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <title>Cuestionario de Salud - Weightloss Professional Nutrition</title>
     <link rel="stylesheet" href="../assets/css/questionnaire.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="questionnaire-page">
@@ -58,34 +59,34 @@ if ($profile && $profile['weight'] && $profile['height'] && $profile['age']) {
                 </div>
 
                 <div class="form-group">
-                    <label for="weight">Peso actual</label>
+                    <label for="weight">Peso actual *</label>
                     <div class="input-group">
-                        <input type="number" id="weight" name="weight" step="0.1" min="30" max="300" required>
+                        <input type="number" id="weight" name="weight" step="0.1" min="30" max="300" placeholder="70.5" required>
                         <select id="weightUnit" name="weight_unit" class="unit-select">
-                            <option value="kg">kg</option>
+                            <option value="kg" selected>kg</option>
                             <option value="lb">lb</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="height">Altura</label>
+                    <label for="height">Altura *</label>
                     <div class="input-group">
-                        <input type="number" id="height" name="height" step="0.1" min="100" max="250" required>
+                        <input type="number" id="height" name="height" step="1" min="100" max="250" placeholder="170" required>
                         <select id="heightUnit" name="height_unit" class="unit-select">
-                            <option value="cm">cm</option>
+                            <option value="cm" selected>cm</option>
                             <option value="ft">ft</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="age">Edad</label>
-                    <input type="number" id="age" name="age" min="15" max="100" required>
+                    <label for="age">Edad *</label>
+                    <input type="number" id="age" name="age" min="15" max="100" placeholder="25" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Género</label>
+                    <label>Género *</label>
                     <div class="radio-group">
                         <label class="radio-card">
                             <input type="radio" name="gender" value="male" required>
@@ -245,7 +246,7 @@ if ($profile && $profile['weight'] && $profile['height'] && $profile['age']) {
                             <span>Problemas de tiroides</span>
                         </label>
                     </div>
-                    <textarea name="health_conditions" placeholder="Describe otras condiciones aquí..."></textarea>
+                    <textarea name="health_conditions" placeholder="Describe otras condiciones aquí..." rows="3"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -268,7 +269,7 @@ if ($profile && $profile['weight'] && $profile['height'] && $profile['age']) {
                             <span>Mariscos</span>
                         </label>
                     </div>
-                    <textarea name="allergies_other" placeholder="Otras alergias..."></textarea>
+                    <textarea name="allergies_other" placeholder="Otras alergias..." rows="3"></textarea>
                 </div>
             </div>
 
@@ -316,7 +317,7 @@ if ($profile && $profile['weight'] && $profile['height'] && $profile['age']) {
                 <div class="form-group">
                     <label>Comidas al día</label>
                     <select name="meals_per_day" class="select-input">
-                        <option value="3">3 comidas principales</option>
+                        <option value="3" selected>3 comidas principales</option>
                         <option value="4">3 comidas + 1 snack</option>
                         <option value="5">3 comidas + 2 snacks</option>
                         <option value="6">6 comidas pequeñas</option>
@@ -343,7 +344,7 @@ if ($profile && $profile['weight'] && $profile['height'] && $profile['age']) {
                     <div class="calc-grid">
                         <div class="calc-item">
                             <div class="calc-label">IMC</div>
-                            <div class="calc-value" id="bmiBMI">--</div>
+                            <div class="calc-value" id="bmiValue">--</div>
                         </div>
                         <div class="calc-item">
                             <div class="calc-label">Calorías Diarias</div>

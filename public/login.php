@@ -18,7 +18,7 @@ if (isset($_COOKIE['auth_token'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - Tweight Nutrition</title>
+    <title>Iniciar Sesión - Weightloss Professional Nutrition</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

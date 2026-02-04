@@ -1,0 +1,418 @@
+/* =============================================
+   FOOD SCANNER - ESTILOS
+   ============================================= */
+
+   .scanner-page {
+    background: #F9FAFB;
+}
+
+/* Header */
+.scanner-header {
+    margin-bottom: 32px;
+}
+
+.scanner-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 4px;
+}
+
+/* Scanner Container */
+.scanner-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Upload Section */
+.upload-section {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid #E5E7EB;
+}
+
+.camera-preview {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 24px;
+    aspect-ratio: 4/3;
+    background: #F9FAFB;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.upload-placeholder svg {
+    color: #9CA3AF;
+    margin-bottom: 16px;
+}
+
+.upload-placeholder h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 8px;
+}
+
+.upload-placeholder p {
+    font-size: 14px;
+    color: #6B7280;
+}
+
+#previewImage,
+#cameraStream {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Upload Actions */
+.upload-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-upload,
+.btn-camera,
+.btn-capture {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1F2937;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-upload:hover,
+.btn-camera:hover {
+    border-color: #10B981;
+    color: #10B981;
+    background: #F0FDF4;
+}
+
+.btn-capture {
+    border-color: #10B981;
+    background: #10B981;
+    color: white;
+}
+
+.btn-capture:hover {
+    background: #059669;
+}
+
+/* Results Section */
+.results-section {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid #E5E7EB;
+    animation: fadeIn 0.3s ease;
+}
+
+.results-section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 24px;
+}
+
+.nutrition-card {
+    background: linear-gradient(135deg, #DCFCE7 0%, #D1FAE5 100%);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.food-name-result {
+    font-size: 28px;
+    font-weight: 700;
+    color: #166534;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.confidence-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    color: #166534;
+}
+
+.nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.nutrition-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #E5E7EB;
+}
+
+.nutrition-item.highlight {
+    border-color: #10B981;
+    background: #F0FDF4;
+}
+
+.nutrition-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.nutrition-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1F2937;
+}
+
+.nutrition-unit {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6B7280;
+    margin-left: 4px;
+}
+
+/* Vitamins Section */
+.vitamins-section {
+    margin-top: 24px;
+}
+
+.vitamins-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 16px;
+}
+
+.vitamins-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.vitamin-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #F9FAFB;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.vitamin-name {
+    font-weight: 600;
+    color: #1F2937;
+}
+
+.vitamin-value {
+    color: #10B981;
+    font-weight: 700;
+}
+
+/* Add to Log Button */
+.add-to-log-btn {
+    width: 100%;
+    padding: 16px;
+    background: #10B981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-to-log-btn:hover {
+    background: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* History Section */
+.history-section {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid #E5E7EB;
+}
+
+.history-section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 24px;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.empty-history {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    color: #9CA3AF;
+}
+
+.history-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid #E5E7EB;
+}
+
+.history-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #10B981;
+}
+
+.history-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.history-info {
+    padding: 12px;
+    background: white;
+}
+
+.history-food-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-calories {
+    font-size: 12px;
+    color: #10B981;
+    font-weight: 600;
+}
+
+.history-date {
+    font-size: 11px;
+    color: #9CA3AF;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.loader.hidden {
+    display: none;
+}
+
+.loader .spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #E5E7EB;
+    border-top-color: #10B981;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 20px;
+}
+
+.loader p {
+    color: #1F2937;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .upload-section,
+    .results-section,
+    .history-section {
+        padding: 20px;
+    }
+
+    .nutrition-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .history-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .upload-actions {
+        flex-direction: column;
+    }
+
+    .btn-upload,
+    .btn-camera,
+    .btn-capture {
+        width: 100%;
+        justify-content: center;
+    }
+}
